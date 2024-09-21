@@ -1,3 +1,6 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 interface Result {
   id: string;
   name: string;
@@ -15,17 +18,21 @@ export default function ResultsList({ results }: ResultsListProps) {
   }
 
   return (
-    <div className="w-full max-w-md mt-8">
-      <h2 className="text-2xl font-bold mb-4">Search Results</h2>
-      <ul className="bg-white shadow-md rounded px-8 pt-6 pb-8">
-        {results.map((result) => (
-          <li key={result.id} className="mb-4 pb-4 border-b last:border-b-0">
-            <h3 className="text-xl font-semibold">{result.name}</h3>
-            <p className="text-gray-600">{result.profession}</p>
-            <p className="text-gray-500">{result.location}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Card className="w-full max-w-md mt-8">
+      <CardHeader>
+        <CardTitle>Search Results</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <ScrollArea className="h-[300px] pr-4">
+          {results.map((result) => (
+            <div key={result.id} className="mb-4 pb-4 border-b last:border-b-0">
+              <h3 className="text-xl font-semibold">{result.name}</h3>
+              <p className="text-muted-foreground">{result.profession}</p>
+              <p className="text-muted-foreground">{result.location}</p>
+            </div>
+          ))}
+        </ScrollArea>
+      </CardContent>
+    </Card>
   );
 }

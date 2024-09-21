@@ -9,13 +9,52 @@ export default function Home() {
 
   const handleSearch = async (query: string) => {
     // TODO: Replace with actual API call
-    const response = await fetch("/api/search", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }),
-    });
-    const data = await response.json();
-    setResults(data.results);
+    // Dummy data for demonstration purposes
+    const dummyResults = [
+      {
+        id: "1",
+        name: "John Doe",
+        profession: "Software Engineer",
+        location: "San Francisco, CA",
+      },
+      {
+        id: "2",
+        name: "Jane Smith",
+        profession: "Marketing Specialist",
+        location: "New York, NY",
+      },
+      {
+        id: "3",
+        name: "Alex Johnson",
+        profession: "Graphic Designer",
+        location: "London, UK",
+      },
+      {
+        id: "4",
+        name: "Emily Brown",
+        profession: "Data Analyst",
+        location: "Toronto, Canada",
+      },
+      {
+        id: "5",
+        name: "Michael Lee",
+        profession: "Product Manager",
+        location: "Seattle, WA",
+      },
+    ];
+
+    // Simulate API call delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    // Filter results based on query (case-insensitive)
+    const filteredResults = dummyResults.filter(
+      (result) =>
+        result.name.toLowerCase().includes(query.toLowerCase()) ||
+        result.profession.toLowerCase().includes(query.toLowerCase()) ||
+        result.location.toLowerCase().includes(query.toLowerCase())
+    );
+
+    setResults(filteredResults);
   };
 
   return (
