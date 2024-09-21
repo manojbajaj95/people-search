@@ -5,7 +5,7 @@ import SearchDialog from "@/components/SearchDialog";
 import ResultsList from "@/components/ResultsList";
 
 export default function Home() {
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<any>([]);
 
   const handleSearch = async (query: string) => {
     // TODO: Replace with actual API call
